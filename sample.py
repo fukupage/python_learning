@@ -1,122 +1,142 @@
 # coding: utf-8
-"""
-print("はろーわーるど");
-print("Hello World AGAIN!");
+#クラスの継承----------------------------------------------------
+class User:
+  def __init__(self, name):
+    self.name = name
+  def say_hi(self):
+    print("ハーイ {0}".format(self.name))
+
+class AdminUser(User):
+  def __init__(self, name, age):
+    super(AdminUser, self).__init__(name)
+    self.age = age
+
+  def say_hello(self):
+    print("ハーイ {0}({1})".format(self.name, self.age))
+  def say_hi(self):
+    print("[admin]ハーイ {0}".format(self.name))
+
+bob = AdminUser("bob",23)
+print(bob.name)
+bob.say_hi()
+bob.say_hello()
+
+#アクセス制限----------------------------------------------------
+# class User:
+#   count = 0
+#   def __init__(self, name):
+#     User.count += 1
+#     self.__name = name
+
+#   def say_hi(self):  #インスタンスメソッド
+#     print("ハーイ {0}".format(self.__name))
+
+#   @classmethod
+#   def show_info(cls): #CLASSメソッド
+#     print("{0} instances".format(cls.count))
+
+# tom = User("tom")
+# bob = User("bob")
+
+# # print(tom.__name)#こちらではアクセスできないが
+# print(tom._User__name)#こちらだとアクセスできる
+
+# tom.say_hi()
+# bob.say_hi()
+
+# User.show_info()
 
 
-# 変数は再代入できるが、大文字で書かれている変数は定数として扱う慣例がある。
-MAIL = "hoge@fuga.bar"
-print(MAIL)
+#関数（メソッド）----------------------------------------------------
+# class User:
+#   count = 0
+#   def __init__(self, name):
+#     User.count += 1
+#     self.name = name
 
-msg = "Hello World!";
-print(msg);
+#   def say_hi(self):  #インスタンスメソッド
+#     print("ハーイ {0}".format(self.name))
 
-msg = "Hello World! AGAIN!!";
-print(msg);
+#   @classmethod
+#   def show_info(cls): #CLASSメソッド
+#     print("{0} instances".format(cls.count))
 
-# 文字列
-s = "hoge hoge fuga fuga bar bar\nhoge hoge fuga fuga bar bar\thoge hoge fuga fuga bar bar";
+# tom = User("tom")
+# bob = User("bob")
 
-# html =
-# <html>
-# <head></head>
-# <body></body>
-# <header></header>
-# <main></main>
-# <footer></footer>
-# </html>;
+# tom.say_hi()
+# bob.say_hi()
 
-# print(s);
-# print(html);
-
-# #数値
-# i = 1; //整数
-# f = 23.4;　//浮動小数点
-# flag = true //論理値
+# User.show_info()
 
 
-x = 10;
-print (x / 3);
-print (x // 3);
-print (x % 3);
-print (x ** 3);
-print (x * 3);
-print (x + 3);
-print (x - 3);
-x += 22;
-print (x);
 
-print(True and False);
-print(True or False);
-print(not True);
+#CLASS変数----------------------------------------------------
+# class User:
+#   count = 0
+#   def __init__(self, name):
+#     User.count += 1
+#     self.name = name
 
-print("Hello " + "わーるど");
-print("Hello\t" * 3);
-
-"""
-
-# name = "fukuda"
-# score = 52.8
-
-# # print("名前:　%s, 特典: %f" % (name, score))
-# # print("名前:　%-10s, 特典: %10.2f" % (name, score))
-# print("名前:　{0}, 特典: {1}".format(name, score))
-# print("名前:　{0:<10s}, 特典: {1:>10.2f}".format(name, score))
-
-# score = int(input("score ?"))
-# if score > 80:
-#     print("Great!");
-# elif score >60:
-#     print("Good")
-# else:
-#     print("ummmm...")
-# print("Great!" if score > 80 else "ummm...")
-
-# i = 0
-# while i < 10:
-#     if i == 5:
-#         break
-#     print(i)
-#     i += 1
-# else:
-#     print("print end")
-
-# for i in range(10):
-# # for i in range(0,10):
-#     if i == 5:
-#         # break
-#         continue
-#     print(i)
-# else:
-#     print("- - foe - -")
-
-# def say_hi():
-#     print("hi!!!")
-# say_hi()
-# def say_hi(name, age=20):
-#     print("hi!!! {0} ({1})".format(name, age))
-# say_hi("rei", 23)
-# say_hi("fuku", 49)
-# say_hi("jobs")
-# say_hi(age = 99, name = "kame")
+# print(User.count)
+# tom = User("tom")
+# bob = User("bob")
+# print(User.count)
 
 
-# def say_hi():
+# print(tom.name + "さんですね！")
+# print(tom.count)
+# print(bob.name + "さんですね！")
+# print(bob.count)
+
+
+# #CLASS----------------------------------------------------
+# class User:
+#   def __init__(self,name):
+#     self.name = name
+
+# tom = User("tom")
+# bob = User("bob")
+
+# print(tom.name + "さんですね！")
+# print(bob.name + "さんですね！")
+
+
+# class User:
 #     pass
-#     # print("hi")
-#     # return "hi"
-# msg = say_hi()
+
+# tom = User()
+# tom.name = "tom"
+# tom.score = 20
+
+# bob = User()
+# bob.name = "bob"
+# bob.level = 5
+
+# print(tom.name)
+# print(tom.score)
+# print(bob.name)
+# print(bob.level)
+
+
+
+#変数のスコープ----------------------------------------------------
+# msg = "hello!"
+
+# def say_hi():
+#     global msg
+#     msg="hello! AGAIN"
+#     print(msg)
+
+# say_hi()
 # print(msg)
 
-msg = "hello"
-msg2 = "world"
-def say_hi():
-  global msg2 #グローバル変数を書き換えたい場合、スコープ内でグローバル変数を扱う宣言をする。
-  msg = "hi"
-  msg2 = "Again"
-  print(msg)
-  print(msg2)
-say_hi()
-print("-----------------------------")
-print(msg)
-print(msg2)
+
+# msg = "hello!"
+
+# def say_hi():
+#     msg = "hi"
+#     print(msg)
+
+# say_hi()
+# print(msg)
