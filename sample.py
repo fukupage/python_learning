@@ -1,59 +1,28 @@
-# データ型 -------------------------------------------------------------------------------
-#リスト型とタプル・集合型・辞書型
-#タプル
-items = (50, "Rei", 3.141592)
-print(items[0])
-print(items[1])
-print(items[2])
+# 内包表記--------------------------------------------------------------------
 
-print("------------------------------------------------------------------------------------")
+# print([i for i in range (10)])
+# print([i * 3 for i in range (10)])
+# print([i * 3 for i in range (10) if i % 2 == 0])
 
-print(list((1, 3, 5)))
-print(tuple([1, 3, 5]))
+#ジェネレーターとして
+# print((i * 3 for i in range (10) if i % 2 == 0))
+print(i * 3 for i in range (10) if i % 2 == 0)
+print({i * 3 for i in range (10) if i % 2 == 0})
 
-# #リスト型
-# scores = [40,50]
-# print(len(scores))
-# print(scores[0])
-# print(scores[1])
-# scores[0] = 100
-# scores[1] = 35
-# scores.append(1352)
-# print("-------------------------------")
+# #filter(関数,イテレータ)--------------------------------------------------------------------
 
-# print(scores[0])
-# print(scores[1])
-# print(scores[2])
-# print("-------------------------------")
+# # def is_even(n):
+# #   return n % 2 == 0
 
-# for score in scores:
-#   print(score)
+# # print(list(filter(is_even, range(10))))
+# print(list(filter(lambda n: n % 2 == 0, range(100))))
 
-# print("-------------------------------")
+#map(関数,イテレータ)--------------------------------------------------------------------
 
-# for i, score in enumerate(scores):
-#   print("{0}/{1}".format(i, score) )
+# # def triple(n):
+# #   return n * 3
 
+# # print(list(map(triple,[1,2,3])))
 
-# 例外処理 -------------------------------------------------------------------------------
-# class MyException(Exception):
-#     pass
-
-# def div(a, b):
-#     try:
-#         if(b < 0):
-#             raise MyException("まいなすじゃないお")
-#         print(a/b)
-#     except MyException as e:
-#         print(e)
-#     except ZeroDivisionError:
-#         print("すとろんぐぜろじゃわれない")
-#     else:
-#         print("すとぜろはおいしい")
-#     finally:
-#         print("-- ときはきた --")
-
-
-# div(10, -3)
-# div(10, 3)
-# div(10, 0)
+# #lambda 引数:処理
+# print(list(map(lambda n:n * 3, [1,2,3])))
